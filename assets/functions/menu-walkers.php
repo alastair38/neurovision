@@ -3,7 +3,7 @@
 class Topbar_Menu_Walker extends Walker_Nav_Menu {
     function start_lvl(&$output, $depth = 0, $args = Array() ) {
         $indent = str_repeat("\t", $depth);
-        $output .= "\n$indent<ul id=\"dropdown-1\" class=\"dropdown-content\">\n";
+        $output .= "\n$indent<ul id=\"dropdown1\" class=\"dropdown-content\">\n";
     }
     function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
        $item_html = '';
@@ -11,7 +11,7 @@ class Topbar_Menu_Walker extends Walker_Nav_Menu {
 
        if ( $item->is_dropdown && $depth === 0 ) {
            $item_html = str_replace( '<a', '<a class="dropdown-button"', $item_html );
-           $item_html = str_replace( '</a>', '<i class="mdi mdi-menu-down right"></i></a>', $item_html );
+           $item_html = str_replace( '</a>', '<i class="material-icons right">keyboard_arrow_right</i></a>', $item_html );
        }
 
        $output .= $item_html;

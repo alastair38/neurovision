@@ -17,22 +17,10 @@ MEDIA QUERIES
 @media #{$medium-and-down} {
 	// styles for medium screens and down
 }
-@media #{$large-and-up} {
+@media #{$large-and-up} {}
 	// styles for large screens and up
 }
 *********************/
-
-
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-main {
-  flex: 1 0 auto;
-}
-
 @-webkit-keyframes show {
   0%   { opacity: 0;}
   100% { opacity: 1; }
@@ -49,6 +37,22 @@ main {
   0%   { opacity: 0;}
   100% { opacity: 1; }
 }
+
+#menu-main {
+  animation: show 2s 1;
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+
+main {
+  flex: 1 0 auto;
+}
+
+
 
 
 .screen-reader-text {
@@ -82,8 +86,76 @@ main {
 	z-index: 100000;
 }
 
+#access {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+  i.material-icons {
+    //cursor: help;
+  }
+}
+
+.changes {
+  font-size: 16px !important;
+  label.form_label {
+    background: color("grey", "darken-3");
+    display: block;
+    text-align: center;
+    padding: 5px;
+    font-size: 16px !important;
+    color: white;
+  }
+  form {
+    padding: 1rem 0;
+    label {
+      font-size: 16px !important;
+      color: black;
+    }
+  }
+}
+
+#accessible {
+  article, article p {
+    font-size: 2rem;
+  }
+
+  #menu-main li a, #sidebar1, section.col.s6 {
+    font-size: 1.5rem;
+  }
+
+  #button {
+    font-size: 1rem;
+  }
+}
+
+#body-medium {
+  font-size: 1.25em !important;
+  h1 {
+    margin: .88em 1em 1em 1em;
+  }
+  h2 {
+    //margin-top: .99em;
+  }
+}
+
+#body-medium nav li a,  #body-large nav li a {
+  font-size: .9em;
+}
+
+#body-large {
+  font-size: 1.7em !important;
+  h1 {
+    margin: .66em 1em 1em 1em;
+  }
+  h2 {
+    //margin-top: 1em;
+  }
+}
+
+
 #cookie-bar {
-  background:rgba(0,0,0, .85);
+  background:rgba(0,0,0, .80);
   height:2rem;
   line-height:2rem;
   color:#eeeeee;
@@ -156,64 +228,44 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 }
 
 h1, .h1 {
-	font-weight: 200;
-  font-size: $h3-fontsize;
+	font-weight: 400;
 	@media #{$medium-and-down} {
-    font-size: 2.25rem;
+    font-size: $h3-fontsize;
   }
   @media #{$small-and-down} {
-    font-size: 1.75rem;
-    font-weight: 300;
+    font-size: $h4-fontsize;
+    font-weight: 400;
   }
 }
+
 
 .home h1 {
-  font-size: 3em;
-  font-weight: 300;
   @media #{$small-and-down} {
-    font-size: 3em;
-  }
-}
-
-h2, .h2 {
-	font-weight: 200;
-	@media #{$medium-and-down} {
-    font-size: 2rem;
-  }
-  @media #{$small-and-down} {
-    font-size: 1.3rem;
-    font-weight: 300;
+    font-size: $h2-fontsize;
   }
 }
 
 .archive h2 {
-  font-size: $h4-fontsize;
-  font-weight: 300;
+    font-size: $h3-fontsize;
+}
+
+h2, .h2 {
+	@media #{$medium-and-down} {
+    font-size: $h4-fontsize;
+  }
+  @media #{$small-and-down} {
+    font-size: $h5-fontsize;
+    font-weight: 400;
+  }
+}
+
+.archive h2 {
+  font-weight: 400;
   @media #{$small-and-down} {
     font-size: $h5-fontsize;
   }
 }
 
-h3, .h3 {
-	font-weight: 300;
-	@media #{$medium-and-down} {
-    font-size: 1.75rem;
-  }
-}
-
-h4, .h4 {
-	font-weight: 300;
-	@media #{$medium-and-down} {
-    font-size: 1.5rem;
-  }
-}
-
-h5, .h5 {
-	font-weight: 300;
-	@media #{$medium-and-down} {
-    font-size: 1.25rem;
-  }
-}
 
 /*********************
 HEADER STYLES
@@ -224,7 +276,6 @@ HEADER STYLES
     margin-right: .5rem;
     height: 40px;
     width: auto;
-    animation: show 1000ms 1;
     @media #{$small-and-down} {
     	height: 25px;
   	}
@@ -250,17 +301,42 @@ i.mdi.mdi-menu {
   height: 37px;
 }
 
-
-
-  button.btn-floating.btn.green.modal-trigger.waves-effect.waves-light {
-    @media #{$medium-and-up} {
-      width: 64px;
-      height: 64px;
-      }
+button.btn-floating.btn.green.modal-trigger.waves-effect.waves-light {
+  @media #{$medium-and-up} {
+    width: 64px;
+    height: 64px;
   }
+}
 
 #nav-mobile {
   text-align: center;
+}
+
+#help {
+    background: $primary-color;
+    color: yellow;
+}
+
+#breadcrumbs {
+  position: fixed; top: 64px; width: 100% !important; margin-left: 0 !important; z-index: 999 !important;
+  background: $primary-color;
+  opacity: 0;
+  transition: 250ms;
+   a:before {
+    content: '\E5CC';
+    font-family: 'Material Icons';
+    color: color("grey", "lighten-2");
+}
+  span:before {
+   content: '\E5CC';
+   font-family: 'Material Icons';
+   color: color("yellow", "base");
+  }
+}
+
+.is_stuck {
+margin-top: 4rem;
+transition: 350ms;
 }
 
 .side-nav li {
@@ -283,18 +359,22 @@ a.dropdown-button.active {
 
 }
 
+
+
+a.active + ul {display:block; opacity: 1;}
+
 .block {
 	display: block;
 	opacity: 1;
 	animation: show 500ms 1;
 }
 
-.mdi {
+.material-icons {
 	transition: 350ms;
 }
 
 .rotate {
-	transform: rotate(180deg);
+	transform: rotate(90deg);
 }
 
 
@@ -302,30 +382,8 @@ a.dropdown-button.active {
 MODAL
 *********************/
 
-.modal {
-	width: 100%;
-	height: 100%;
-	max-height: 100%;
-	&.bottom-sheet {
-		max-height: 100%;
-		text-align: center;
-	}
-	&.modal-fixed-footer {
-		height: 100%;
-		max-height: 100%;
-	}
-  .collapsible, .collapsible-header, .collapsible-body {
-    border: none;
-    background: transparent;
-    font-size: 1.5rem;
-    font-weight: 300;
-  }
-
-  a.collapsible-header:after {
-    font-family: 'Material Design Icons';
-    padding-left:4px;
-    content: '\f144';
-  }
+.modal-footer .btn {
+  font-size: 1.25rem !important;
 }
 
 
@@ -407,17 +465,33 @@ POSTS & CONTENT STYLES
   margin: 1em;
 }
 
-.key-pages {
-  padding: 2em 3em;
-  margin-bottom: 2em;
-  opacity: .85;
-  border-radius: 5%;
-  border: 8px solid $secondary-color;
+#key_pages {
+  aside {
+    text-align: center;
+    animation: show 1s 1;
+  }
+  aside a {
+    display: inline-block;
+    width: 100%;
+    border: 5px solid $primary-color;
+    border-radius: 5px;
+    i {
+      font-size: 8rem;
+    }
+    &:hover i {
+      color: $secondary-color;
+    }
+  }
+}
+
+#child_pages div {
+  padding: 1rem;
+  color: white;
 }
 
 .um-header {
   border-bottom: none;
-  padding-bottom: 0;
+  padding-bottom: 0px;
 }
 
 .um-member-name a{
@@ -433,29 +507,30 @@ h3.side-title {
   font-size: 1.25em;
   padding: 1rem .5rem;
   line-height: 2rem;
-  font-weight: 300;
+  font-weight: 400;
   margin: 1em 0;
   text-transform: uppercase;
 }
 
 h3.search-title {
-  font-size: 1.25em;
-  padding-top: 3rem;
+  font-size: $h6-fontsize;
+  padding: .5rem 0;
   font-weight: 300;
   text-transform: uppercase;
+  margin-top: 0;
 }
 
-p.chip.white {
+p.chip.materialize-red {
   display: block;
   width: 70%;
   margin-left: 15%;
 }
 
 .search-related {
-  padding-bottom: 2em;
-  margin-top: 2rem;
-  border-bottom: 2px solid $input-border-color;
-  min-height: 320px;
+  padding-bottom: 2rem;
+  li {
+  margin-bottom: 1rem;
+  }
 }
 
 form#wp-advanced-search {
@@ -467,7 +542,7 @@ input.wpas-submit.btn {
 }
 
 .profile-sub-title, .profile-interest {
-color: color("grey", "base");
+color: color("grey", "darken-2");
  font-weight: 600;
 }
 
@@ -490,17 +565,31 @@ color: color("grey", "base");
 body.home {
   background: color("grey", "lighten-4");
   @media #{$medium-and-up} {
-  background: url('../images/frontpage.jpg') no-repeat;
+  //background: url('../images/frontpage.jpg') no-repeat;
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
   }
 }
 
-.home #bottom {
-  margin-bottom: 0px;
+.home #gettingStarted {
+  margin-bottom: 0em;
 }
 
+
+.card-content h2 {
+  font-size: $h5-fontsize;
+}
+
+.card .btn {
+  width: 100%;
+}
+
+label.card-sub-title {display: block;}
+.card i {font-size: 1rem;}
+div.col.info {
+  padding: 2rem 0;
+}
 
 footer.card-content {
   border-top: 1px solid rgba(160,160,160,.2);
@@ -512,25 +601,27 @@ article section {
   }
 }
 
+.article-header {
+  margin-bottom: 2rem;
+}
+
 .single-title,
 .page-title {
-
+  font-size: $h2-fontsize;
+  margin: 1em 0 0 0;
 }
 
-.single-title {
-
+.single #sidebar1, .author #sidebar1 {
+  margin-top: 3.5rem;
 }
 
-.page-title {
 
-	// Remove Foundation vcard styling from author page titles
-	.vcard {
-		border: 0px;
-		padding: 0px;
-	}
-}
 
 .archive-title {
+
+}
+.resource-page-title {
+  font-size: $h3-fontsize;
 
 }
 
@@ -540,18 +631,26 @@ h6.card-sub-title {
   font-weight: 500;
 }
 
-.mdi-help-circle {
-  cursor: help;
-}
-
-
 
 // Post meta
 
+.share-links a svg {
+  margin: 0 5px;
+  vertical-align:text-top;
+  fill: teal;
+  &:hover {
+    fill: #444;
+  }
+}
 
-.single #byline {
-	@extend .white;
-	time {}
+.byline {
+  display: inline-block;
+  width: 100%;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 5px 0;
+  margin-top: 1rem;
+  font-style: italic;
 }
 
 #map, #photo {
@@ -610,15 +709,10 @@ h6.card-sub-title {
 }
 
 // Home page
-.fixed-action-btn {
-  opacity: 0;
-}
 
 #gettingStarted {
   opacity: 0;
-  padding: 5em 1em 3em 1em;
-  margin-bottom: 0;
-  background: rgba(38,38,38,.85);
+  //background: rgba(38,38,38,.85);
   aside {
     padding: 1em 2em;
   }
@@ -630,10 +724,10 @@ h6.card-sub-title {
   #text {
   }
   p {
-    line-height: 1.75em;
+    line-height: 110%;
     &#intro {
-      font-size: 1.3em;
-      font-weight: 300;
+      font-size: 1.3rem;
+      font-weight: 400;
       @media #{$small-and-down} {
       	font-size: 1.1em;
       }
@@ -644,39 +738,10 @@ h6.card-sub-title {
   }
 }
 
-#about-pathways {
-  opacity: 0;
-  padding: 2em 0em;
-  margin-bottom: 0;
-  background: rgba(255,255,255,.85);
-  aside {
-    padding: 1em 2em;
-  }
-  h3{
-    @media #{$small-and-down} {
-      text-align: center;
-    }
-  }
-  .btn{
-    @media #{$small-and-down} {
-      width: 100%;
-    }
-  }
-  p {
-    line-height: 1.75em;
-    font-size: 1.3em;
-    font-weight: 300;
-    @media #{$small-and-down} {
-      font-size: 1.1em;
-    }
-  }
-}
 
 // Entry content
 .page-parent .entry-content p,
 .page-child .entry-content p {
-  font-size: 1.3em;
-  font-weight: 300;
   em {
     font-weight: 500;
   }
@@ -688,11 +753,10 @@ h6.card-sub-title {
 }
 
 .single-post .entry-content p {
-  font-size: 1.3em;
-  font-weight: 300;
 }
 
 .entry-content {
+  animation: show 1s 1;
   img.hide-on-large-only {
     margin-top: 2rem;
   }
@@ -756,6 +820,18 @@ img.hide-on-med-and-up {
 
 .parallax-container {
   height: 250px;
+}
+
+span.cat-count {
+  display: inline-block;
+  font-size: 1.25em;
+  width: 40px;
+  height: 40px;
+  line-height:
+  40px;
+  background: $off-black;
+  color: white;
+  border-radius: 50%;
 }
 /*********************
 IMAGE GALLERY STYLES
@@ -950,7 +1026,7 @@ COMMENT STYLES
 	// comment reply link
 
   span.badge {
-    background: $button-color-raised;
+    background: yellow;
     border-radius: 2px;
     border: 1px solid $secondary-color;
     a {
@@ -1107,6 +1183,16 @@ SIDEBARS & ASIDES
   .wp-post-image {
     margin-top: 2rem;
   }
+  a.chip {
+    display: block;
+    width: 90%;
+    margin: 1rem 5%;
+    color: #fff;
+    background: color("teal", "lighten-2");
+    &:hover {
+
+    }
+  }
 }
 
 .searchandfilter {
@@ -1140,7 +1226,7 @@ input[type="submit"] {
 
 .widget {
   margin-top: 2em;
-  color: $text-contrast;
+  color: grey;
 	ul {
 		margin: 0;
 
@@ -1165,12 +1251,19 @@ FOOTER STYLES
 
 .home footer.page-footer {
   margin-top: 0px;
+  h4 {
+    font-size: 1.5em;
+  }
+}
+
+#logos {
+  margin-top: -20px;
 }
 
 .page-footer {
   background: $footer-bg-color;
   @extend .white-text;
-  font-weight: 300;
+  font-weight: 400;
   ul {
     font-size: 0; // this removes white space between li children for application of side borders. Margin needs to reapplied hence...
     margin-top: 1rem;
@@ -1178,7 +1271,7 @@ FOOTER STYLES
   li {
     display: inline-block;
     width: 20%;
-    font-size: .85rem;
+    font-size: .95rem;
     @media #{$small-and-down} {
     	width: 100%;
       padding: 5px 0;
@@ -1200,13 +1293,13 @@ FOOTER STYLES
     }
   }
   li:not(:first-of-type) {
-    border-left: 1px solid $secondary-color;
+    border-left: 1px solid #fff;
     @media #{$small-and-down} {
       border-left: 1px solid transparent;
     }
   }
   li:not(:last-of-type) {
-    border-right: 1px solid $secondary-color;
+    border-right: 1px solid #fff;
     @media #{$small-and-down} {
       border-right: 1px solid transparent;
     }
@@ -1230,11 +1323,9 @@ FOOTER STYLES
   background: rgba(38,38,38,.85);
 }
 
-/*********************
-FOUNDATION STYLES
-*********************/
 
-/*********************
+
+/********
 PLUGIN STYLES
 *********************/
 // Makes Gravity Forms play nice with Foundation Form styles

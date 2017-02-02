@@ -1,71 +1,113 @@
 <?php
 $title = single_cat_title("", false);
 ?>
-<div id="sidebar1" class="col s12 m3 l3" role="complementary">
-	<div class="search-related grey lighten-5">
+<aside id="sidebar1" class="col s12 l3 valign" role="complementary">
 
-		<?php
-		if (is_singular('post')) {
-			the_post_thumbnail('large', array('class' => 'hide-on-med-and-down responsive-img'));
-			$authors = get_field('authors');
-			if ($authors){
-				echo '<h3 class="search-title center">Authors</h3>';
-			}
-			foreach ($authors as $author){
-				um_fetch_user($author[ID]);
-						$fn =  $author['user_firstname'];
-						$ln = $author['user_lastname'];
-						echo '<p class="chip white center"><a href="profile/' . strtolower($fn) . '-' . strtolower($ln) . '">' . $fn . ' ' . $ln . '</a></p>';
-			}
-				// echo get_the_term_list( $post->ID,'category','',', '); // category will be changed to whatever the resource taxonomy is
-				?>
-			<h3 class="side-title center">Category</h3>
-			<p class="center">
-			<?php echo get_the_term_list( $post->ID,'category','',', ');?>
-		</p>
-
-			<h3 class="side-title center">Date</h3>
-			<p class="center"><i class="mdi mdi-clock"></i>
-			<?php echo the_time('F j, Y');?>
-		</p>
+	<div class="row search-related card">
+<div role="search">
 <?php
-		} else {
+if (  is_home() || is_category() || is_singular('post') ) {?>
 
-		// args
-		if(! empty( $title )) {
+	<h3 class="search-title grey darken-3 white-text center">Filter Articles</h3>
+	<?php //	$my_search->the_form();
+			// echo do_shortcode( '[searchandfilter taxonomies="resource-category,category" show_count="1,1" types="checkbox,checkbox" headings="Categories,Types" hide_empty="0,0"]' );
+			$cats = get_terms( 'category', array(
+			    'hide_empty' => 0
+			) );
 
-		$args = array(
-			'meta_key' => 'expertise', // expertise options and categories must be the same for this not to break
-			'meta_value' => '', // matching the category title to its equivalent expertise field value
-			'meta_compare' => 'LIKE',
-			'orderby' => 'post_count', // ordering by highest post count
-			'order' => 'DESC',
-			'number' => 5 // only getting 5 members
+			    echo '<ul class="col s12">';
+			    foreach ( $cats as $cat ) {
+			        echo '<li><a href="' . esc_url( get_term_link( $cat ) ) . '">' . $cat->name . '</a><span class=" round-badge">' . $cat->count . '</span></li>';
+			    }
+			    echo '</ul>';
 
-		);
-		// The Query
-		$user_query = new WP_User_Query( $args );
-	//	um_user('profile_photo'); get profile photo after um_fetch_user
+ }?>
+<?php
+if ( is_post_type_archive('publications') || is_tax('publication_type') || is_singular('publications') ) {
+echo '<h3 class="search-title grey darken-3 white-text  center">Filter Publications</h3>';
+$terms = get_terms( 'publication_type', array(
+    'hide_empty' => 0
+) );
 
-		// User Loop
-		if ( ! empty( $user_query->results ) ) {
-			echo '<h3 class="side-title center">Need an expert?</h3>';
-			foreach ( $user_query->results as $user ) {
-			um_fetch_user( $user->ID );
-					echo '<p class="chip white center"><a class="" href="/mfn/profile/' . strtolower($user->first_name) . '-' . strtolower($user->last_name) . '">' . um_get_display_name( $user->ID ) . '</a></p>';
-			}
-		}
-		}
+    echo '<ul class="col s12">';
+    foreach ( $terms as $term ) {
+        echo '<li><a href="' . esc_url( get_term_link( $term ) ) . '">' . $term->name . '</a><span class=" round-badge">' . $term->count . '</span></li>';
+    }
+    echo '</ul>';
+}
 
-		// aaaaaand reset ...
-		wp_reset_query();
+?>
 
-		echo '<h3 class="search-title center">Search resources</h3>';
-	//	$my_search->the_form();
-			echo do_shortcode( '[searchandfilter taxonomies="resource-category,category" show_count="1,1" types="checkbox,checkbox" headings="Categories,Types" hide_empty="0,0"]' );
-		} ?>
+<?php if(is_singular('projects')) {
+
+//here we get the children of the current project. This will allow individual content pieces for each project, if required
+$id = get_the_ID();
+$args = array(
+'orderby'          => 'post_date',
+'order'            => 'DESC',
+'post_type'        => 'projects',
+'post_parent'      => $id,
+'post_status'      => 'publish',
+'suppress_filters' => true
+);
+
+$children = get_posts( $args );
+
+if ($children) {
+echo '<h3 class="search-title grey darken-3 white-text center">Latest from YPAG</h3>
+			<ul class="col s12">';
+foreach ($children as $child) {
+$trimmed = wp_trim_words( $child->post_content, $num_words = 10, $more = null );
+ echo '<li class="cardcontent">
+ <a href="' . $child->guid . '">' . $child->post_title . '</a></li>';
+}
+} echo '</ul>';
+
+?>
+<?php
+
+$id = get_the_id();
+$args = array(
+	'blog_id'      => $GLOBALS['blog_id'],
+	'role'         => '',
+	'role__in'     => array(),
+	'role__not_in' => array(),
+	'meta_key'     => 'your_projects',
+	'meta_value'   => $id,
+	'meta_compare' => 'LIKE',
+	'meta_query'   => array(),
+	'date_query'   => array(),
+	'include'      => array(),
+	'exclude'      => array(),
+	'orderby'      => 'login',
+	'order'        => 'ASC',
+	'offset'       => '',
+	'search'       => '',
+	'number'       => '',
+	'count_total'  => false,
+	'fields'       => 'all',
+	'who'          => ''
+ );
+$blogusers = get_users( $args );
+if($blogusers){
+	echo '<div class="col s12"><h5 class="light center">Project Members</h5>';
+	foreach ( $blogusers as $user ) {
+
+	echo '<div class="chip block white"><img class="" src="' . get_field('user_image', 'user_' . $user->ID . '') . '" /><a href="' . get_author_posts_url($user->ID, $user->user_nicename) . '">' . $user->display_name . '</a></div>' ;
+	}
+	echo '</div>';
+}
+}?>
+
+<?php if(is_author()) {
+	$author = get_queried_object();
+    $author_id = $author->ID;
+	echo '<div class="col s12"><h5 class="light center">' . get_the_author_meta( 'display_name', $author_id ) . '</h5><img class="responsive-img" src="' . get_field('user_image', 'user_' . $author_id  . '') . '" />' . get_the_author_meta( 'description', $author_id ) . '</div>';
+
+}?>
+
+</div>
 
 	</div>
 
-
-</div>
+</aside>

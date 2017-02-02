@@ -1,32 +1,41 @@
 <?php
 get_header(); ?>
 
-
-
 	<main class="container">
-			<div class="row" role="main">
+			<div class="row">
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 				<?php
-				  $children = get_pages('title_li=&child_of='.$post->ID.'&echo=0');
-				  if ($children) {
+			if( is_page('About Neurosec') && !$post->post_parent > 0 ) {
 							get_template_part( 'parts/loop', 'page-about' );
 					} else {
-						get_template_part( 'parts/loop', 'page' );
+						get_template_part( 'parts/loop', 'page-team' );
 					}
-					?>
+					endwhile; endif;
+				?>
 
-					<?php //get_template_part( 'parts/loop', 'page-about' ); ?>
+			</div> <!-- end #main -->
 
+			<!-- <aside class="card 	row">
+				<?php
+				if( is_page('Neurosec Team') ) {
 
-				<?php endwhile; endif; ?>
+			$args = array( 'posts_per_page' => 10, 'post_type'=> 'projects', 'parent' => 0, 'hierarchical' => 0 );
 
+			$myposts = get_posts( $args );
+			foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
+				<div class="col s6">
+					<div class="">
+						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+					</div>
+				</div>
+			<?php endforeach;
+			wp_reset_postdata();}?>
 
-		</div> <!-- end #main -->
-
-			<?php // get_sidebar(); ?>
+			</aside> -->
 
 	</main> <!-- end main -->
+
 
 
 

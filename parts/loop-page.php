@@ -1,6 +1,6 @@
-<?php get_template_part( 'parts/content', 'breadcrumbs' ); ?>
 
-<article id="post-<?php the_ID(); ?>" class="<?php echo $post->post_name;?>" role="article" itemscope itemtype="http://schema.org/WebPage">
+
+<article id="post-<?php the_ID(); ?>" class="<?php echo $post->post_name;?>" itemscope itemtype="http://schema.org/WebPage">
 
 	<header class="article-header">
 
