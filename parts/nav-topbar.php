@@ -4,7 +4,7 @@
 <div class="navbar-fixed">
 
 <nav>
-	<div class="nav-wrapper container"><a href="<?php bloginfo('url'); ?>"><img id="logo" class="center"
+	<div class="nav-wrapper container"><img id="logo" class="center"
 		<?php
 		$logo_image = get_theme_mod( 'tcx_logo_image' );
 		if ($logo_image){?>
@@ -13,8 +13,8 @@
 			} else {?>
 			src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" alt=""
 			<?php }?>
-			  /></a>
-<h1 class="screen-reader-text"><?php bloginfo('name'); ?></h1>
+			  />
+<a class="brand-logo light" href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a>
 
 
 			<div class="hide-on-med-and-down right">
@@ -24,7 +24,7 @@
 
 
 	<ul id="slide-out" class="side-nav">
-		<div class="center black">
+		<div class="center black white-text">
 			<img id="logo"
 				<?php
 				$logo_image = get_theme_mod( 'tcx_logo_image' );
@@ -34,8 +34,11 @@
 					} else {?>
 					src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" alt=""
 					<?php }?>
-						/><?php bloginfo('name'); ?></a>
+						/><?php bloginfo('name'); ?>
       </div>
+			<li>
+				<a class="" href="<?php bloginfo('url'); ?>">Home</a>
+			</li>
 		<?php joints_top_nav(); ?>
   </ul>
   <a href="#" data-activates="slide-out" class="button-collapse right"><i class="material-icons">menu</i></a>

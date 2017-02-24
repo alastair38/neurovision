@@ -10,6 +10,7 @@
   background-color: $chip-bg-color;
   margin-bottom: $chip-margin;
   margin-right: $chip-margin;
+  transition: 250ms;
 
   img {
     float: left;
@@ -26,6 +27,17 @@
     line-height: 32px;
     padding-left: 8px;
   }
+  .filter {
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+    line-height: 32px;
+    padding-left: 8px;
+
+}
+&:hover {
+  background: white;
+}
 }
 
 .chips {

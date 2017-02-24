@@ -3,17 +3,19 @@ get_header(); ?>
 
 	<main class="container">
 			<div class="row">
+				<div class="col s12" role="main">
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 				<?php
 			if( is_page('About Neurosec') && !$post->post_parent > 0 ) {
 							get_template_part( 'parts/loop', 'page-about' );
 					} else {
-						get_template_part( 'parts/loop', 'page-team' );
+						get_template_part( 'parts/loop', 'page' );
 					}
 					endwhile; endif;
 				?>
 
+			</div>
 			</div> <!-- end #main -->
 
 			<!-- <aside class="card 	row">

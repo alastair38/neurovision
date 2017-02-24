@@ -4,8 +4,8 @@
 <div class="slider">
 
 	<?php
-	$post_type = get_field('content_type'); // these custom fields control post_type and post_per_page
-	$items = get_field('items_to_show'); // set the values in the edit screen for the home page
+	//$post_type = get_field('content_type'); // these custom fields control post_type and post_per_page
+	//$items = get_field('items_to_show'); // set the values in the edit screen for the home page
 	$args = array(
 		'posts_per_page' => 3,
 		'post_type' => 'post',
@@ -26,14 +26,13 @@
 	// 	if ( $eventDate >= $currentDate ) : ?>
 	<div style="background: url(<?php echo $thumb_url;?>) no-repeat center center; background-size: cover;">
 
-		 <article class="col s12 l6 waves-effect">
-			 <h3 class="light"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
-			 <label class="grey-text lighten-3">
-				Published <?php echo the_time('F j, Y');?>
-			</label><br />
+		 <article class="waves-effect flow-text"><a href="<?php the_permalink() ?>">
+			 <h3 class="light"><?php the_title(); ?></h3>
+			 <p class="thin">
+
 			 <?php
 			 $content = get_the_content();
-			 echo wp_trim_words($content, 10);?>
+			 echo wp_trim_words($content, 20);?></p></a>
 		 </article>
 	</div>
 

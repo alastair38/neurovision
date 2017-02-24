@@ -1,12 +1,8 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class(''); ?> role="article">
-	<section>
-		<h2><a href="<?php the_permalink() ?>" class="center" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-			<?php get_template_part( 'parts/content', 'byline' ); ?>
-		<?php the_field('description'); ?>
-	</section>
-	<footer class="card-content flow-text">
-			<?php get_template_part( 'parts/content', 'meta-archives' ); ?>
+<li class="collection-item avatar">
+      <?php the_post_thumbnail(array(100,100), array('class' => 'responsive-img circle')); ?>
+      <span><a href="<?php the_permalink() ?>" class="center" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></span>
+      <label class="authors">Written	on <?php echo the_time('F j, Y') . '.';?></label>
+      <?php the_excerpt();?>
 
-	</footer>
-
-</article>
+      <a href="#!" class="secondary-content"><i class="material-icons">folder</i></a>
+    </li>

@@ -2,7 +2,7 @@
 
 get_header(); ?>
 
-<main class="container">
+<main>
 
 	<div class="row">
 

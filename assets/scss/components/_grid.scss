@@ -19,8 +19,8 @@
 }
 
 .section {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 3rem; //changed from 1rem
+  padding-bottom: 0rem; //changed from 1rem
 
   &.no-pad {
     padding: 0;

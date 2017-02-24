@@ -1,6 +1,6 @@
-$slick-arrow-color: tomato !default;
-$slick-dot-color: black !default;
-$slick-dot-color-active: $slick-dot-color !default;
+$slick-arrow-color: color("materialize-red", "lighten-1") !default;
+$slick-dot-color: white !default;
+$slick-dot-color-active: $slick-arrow-color !default;
 $slick-prev-character: "\E314" !default;
 $slick-next-character: "\E315" !default;
 $slick-dot-character: "\2022" !default;
@@ -14,15 +14,22 @@ $slick-opacity-not-active: 0.25 !default;
   animation: show 2300ms 1;
   position: relative;
   width: 100%;
-  border-bottom: 6px solid color('blue-grey', 'darken-2');
+  height: 450px;
   .slick-slide {
-    height: 400px;
+    height: 450px;
   }
   article.waves-effect {
-    background: rgba(0,0,0,.9);
+    background: rgba(48, 45, 63, 0.63);
+    width: 100%;
     color: white;
     height: 100%;
-    padding: 4rem;
+    padding: 5rem 3.5rem;
+    h3 {
+      color: $slick-arrow-color;
+    }
+    p {
+      color: #fff;
+    }
   }
 
   // Fullscreen slider
@@ -48,7 +55,7 @@ $slick-opacity-not-active: 0.25 !default;
   .slides {
     background-color: $slider-bg-color;
     margin: 0;
-    height: 400px;
+    height: 450px;
 
     li {
       opacity: 0;
@@ -203,8 +210,10 @@ $slick-opacity-not-active: 0.25 !default;
     li {
         position: relative;
         display: inline-block;
-        height: 20px;
-        width: 20px;
+        background: $slick-dot-color;
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
         margin: 0 5px;
         padding: 0;
         cursor: pointer;
@@ -237,15 +246,18 @@ $slick-opacity-not-active: 0.25 !default;
                 font-size: $slick-dot-size;
                 line-height: 20px;
                 text-align: center;
-                color: $slick-dot-color;
-                opacity: $slick-opacity-not-active;
+                //color: $slick-dot-color;
+                //opacity: $slick-opacity-not-active;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
             }
         }
+        &.slick-active {
+          background: $slick-dot-color-active;
+        }
         &.slick-active button:before {
-            color: $slick-dot-color-active;
-            opacity: $slick-opacity-default;
+            //color: $slick-dot-color-active;
+            //opacity: $slick-opacity-default;
         }
     }
 }

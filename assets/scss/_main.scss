@@ -52,8 +52,45 @@ main {
   flex: 1 0 auto;
 }
 
+ul.tabs.tabs-fixed-width {margin: -20px 0 2rem 0; background: #fff;}
+li.tab.col.s4 a {
+  font-size: 1.5rem;
+  @media #{$small-and-down} {
+    font-size: 1.15rem;
+  }
+}
+div#about {margin-top: -20px; padding: 3rem 0;}
 
+h2.thin:before {content: '\201C';
+font-family: serif;
+font-size: 5rem;
+color: color("materialize-red", "lighten-2");
+position: absolute;
+left: 0;
+}
 
+h2.thin {
+  position: relative;
+  padding: 0 4rem;
+}
+
+h2.thin:after {content: '\201D';
+font-family: serif;
+font-size: 5rem;
+color: color("materialize-red", "lighten-2");
+position: absolute;
+right: 0;
+}
+
+.home h4.thin {
+  line-height: 5rem;
+  @media #{$small-and-down} {
+    line-height: 3rem;
+    font-size: $h5-fontsize;
+  }
+}
+
+.home section {padding-bottom: 2rem;}
 
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
@@ -371,6 +408,9 @@ a.active + ul {display:block; opacity: 1;}
 
 .material-icons {
 	transition: 350ms;
+  &.md-48 {
+    font-size: 48px;
+  }
 }
 
 .rotate {
@@ -591,6 +631,11 @@ div.col.info {
   padding: 2rem 0;
 }
 
+.card-link {
+  padding-top: 1rem;
+  text-transform: uppercase;
+}
+
 footer.card-content {
   border-top: 1px solid rgba(160,160,160,.2);
 }
@@ -611,11 +656,44 @@ article section {
   margin: 1em 0 0 0;
 }
 
+.single article, .page-template-default article {
+  padding: 0 1rem 1rem 1rem;
+  .single-title, .page-title {
+    padding: .5rem 0;
+  }
+}
+
+
+
 .single #sidebar1, .author #sidebar1 {
   margin-top: 3.5rem;
 }
 
+label.authors {
+    font-size: 1rem;
+    display: block;
+    padding: 1rem 0;
+    font-style: italic;
+}
 
+label.byline {
+  font-size: 1rem;
+}
+
+.blog .m6 .card {
+  height: 600px;
+}
+span#next {
+  margin-left: 75%;
+  text-align: center;
+  margin-top: 1rem;
+  width: 25%;}
+
+span#prev {
+  text-align: center;
+  margin-top: 1rem;
+  width: 25%;
+}
 
 .archive-title {
 
@@ -641,6 +719,15 @@ h6.card-sub-title {
   &:hover {
     fill: #444;
   }
+}
+
+span.share-links.right {
+@media #{$small-and-down} {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: .25rem;
+}
 }
 
 .byline {
@@ -763,6 +850,10 @@ h6.card-sub-title {
 	img {
 		max-width: 100%;
 		height: auto;
+    @media #{$small-and-down} {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
 	}
 
 	.alignleft, img.alignleft {

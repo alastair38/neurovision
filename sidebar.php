@@ -1,42 +1,48 @@
 <?php
 $title = single_cat_title("", false);
 ?>
-<aside id="sidebar1" class="col s12 l3 valign" role="complementary">
 
-	<div class="row search-related card">
-<div role="search">
 <?php
-if (  is_home() || is_category() || is_singular('post') ) {?>
+if (  is_home() || is_category() || is_post_type_archive('publications') || is_tax('publication_type') ) {?>
 
-	<h3 class="search-title grey darken-3 white-text center">Filter Articles</h3>
-	<?php //	$my_search->the_form();
-			// echo do_shortcode( '[searchandfilter taxonomies="resource-category,category" show_count="1,1" types="checkbox,checkbox" headings="Categories,Types" hide_empty="0,0"]' );
-			$cats = get_terms( 'category', array(
-			    'hide_empty' => 0
-			) );
+	<div id="modal1" class="modal bottom-sheet">
+	    <div class="modal-content col s4">
 
-			    echo '<ul class="col s12">';
-			    foreach ( $cats as $cat ) {
-			        echo '<li><a href="' . esc_url( get_term_link( $cat ) ) . '">' . $cat->name . '</a><span class=" round-badge">' . $cat->count . '</span></li>';
-			    }
-			    echo '</ul>';
+				<?php //	$my_search->the_form();
+						// echo do_shortcode( '[searchandfilter taxonomies="resource-category,category" show_count="1,1" types="checkbox,checkbox" headings="Categories,Types" hide_empty="0,0"]' );
+						if (  is_home() || is_category()){
+							echo '<h5>Filter Articles by Category</h5>';
+							$cats = get_terms( 'category', array(
+									'hide_empty' => 0
+							) );
 
+									echo '<ul class="">';
+									foreach ( $cats as $cat ) {
+											echo '<li><a href="' . esc_url( get_term_link( $cat ) ) . '">' . $cat->name . '</a><span class=" round-badge">' . $cat->count . '</span></li>';
+									}
+									echo '</ul>';
+						} else {
+							echo '<h5>Filter Publications by Type</h5>';
+							$terms = get_terms( 'publication_type', array(
+							    'hide_empty' => 0
+							) );
+
+							    echo '<ul class="col s12">';
+							    foreach ( $terms as $term ) {
+							        echo '<li><a href="' . esc_url( get_term_link( $term ) ) . '">' . $term->name . '</a><span class=" round-badge">' . $term->count . '</span></li>';
+							    }
+							    echo '</ul>';
+						}
+
+
+			 ?>
+	    </div>
+	    <div class="modal-footer">
+	      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+	    </div>
+	  </div>
+	<?php
  }?>
-<?php
-if ( is_post_type_archive('publications') || is_tax('publication_type') || is_singular('publications') ) {
-echo '<h3 class="search-title grey darken-3 white-text  center">Filter Publications</h3>';
-$terms = get_terms( 'publication_type', array(
-    'hide_empty' => 0
-) );
-
-    echo '<ul class="col s12">';
-    foreach ( $terms as $term ) {
-        echo '<li><a href="' . esc_url( get_term_link( $term ) ) . '">' . $term->name . '</a><span class=" round-badge">' . $term->count . '</span></li>';
-    }
-    echo '</ul>';
-}
-
-?>
 
 <?php if(is_singular('projects')) {
 

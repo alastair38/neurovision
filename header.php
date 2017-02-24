@@ -27,13 +27,13 @@
   		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
   		<?php wp_head(); ?>
-      
+
 		<!-- Drop Google Analytics here -->
 		<!-- end analytics -->
 
 	</head>
 
-	<body id="body-normal-text" <?php body_class('grey lighten-5'); ?>>
+	<body id="body-normal-text" <?php body_class('grey lighten-4'); ?>>
 
 		<header class="header  valign-wrapper">
 						 <!-- This navs will be applied to the topbar, above all content

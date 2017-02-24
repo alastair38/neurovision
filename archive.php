@@ -9,11 +9,9 @@ $title = single_cat_title("", false);
 			<div class="col s12">
 
 				<header>
-					<?php if(is_author()) {
-						echo '<h1 class="page-title center">' . get_the_author() . '</h1>';
-					} else {
-						echo '<h1 class="page-title center">' . $title . '</h1>';
-					}?>
+					<?php
+						echo '<h1 class="page-title thin center">' . $title . '</h1>';
+					?>
 
 				</header>
 
