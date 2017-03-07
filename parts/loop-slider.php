@@ -30,11 +30,7 @@
 
 		 <article class="waves-effect flow-text"><a href="<?php the_permalink() ?>">
 			 <h3 class="light"><?php the_title(); ?></h3>
-			 <!-- <p class="thin">
-
-			 <?php
-			 $content = get_the_content();
-			 //echo wp_trim_words($content, 20);?></p></a> -->
+			</a>
 		 </article>
 	</div>
 
