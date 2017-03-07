@@ -4,11 +4,11 @@
 <div class="slider">
 
 	<?php
-	//$post_type = get_field('content_type'); // these custom fields control post_type and post_per_page
-	//$items = get_field('items_to_show'); // set the values in the edit screen for the home page
+	$post_type = get_field('content_type'); // these custom fields control post_type and post_per_page
+	$items = get_field('items_to_show'); // set the values in the edit screen for the home page
 	$args = array(
-		'posts_per_page' => 3,
-		'post_type' => 'post',
+		'posts_per_page' => $items,
+		'post_type' => $post_type,
 		// 'meta_key'=>'event_date',
 		// 'orderby' => 'meta_value',
 		'order' => DESC
