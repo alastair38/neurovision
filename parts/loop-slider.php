@@ -9,6 +9,8 @@
 	$args = array(
 		'posts_per_page' => $items,
 		'post_type' => $post_type,
+		'featured_video' => 'Yes',
+
 		// 'meta_key'=>'event_date',
 		// 'orderby' => 'meta_value',
 		'order' => DESC
@@ -28,11 +30,11 @@
 
 		 <article class="waves-effect flow-text"><a href="<?php the_permalink() ?>">
 			 <h3 class="light"><?php the_title(); ?></h3>
-			 <p class="thin">
+			 <!-- <p class="thin">
 
 			 <?php
 			 $content = get_the_content();
-			 echo wp_trim_words($content, 20);?></p></a>
+			 //echo wp_trim_words($content, 20);?></p></a> -->
 		 </article>
 	</div>
 

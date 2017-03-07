@@ -66,6 +66,27 @@ register_taxonomy( 'video_date',
   )
 );
 
+register_taxonomy( 'featured_video',
+  array('videos'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
+  array('hierarchical' => true,    /* if this is false, it acts like tags */
+    'labels' => array(
+      'name' => __( 'Featured Video', 'neurovisiontheme' ), /* name of the custom taxonomy */
+      'singular_name' => __( 'Featured Video option', 'neurovisiontheme' ), /* single taxonomy name */
+      'search_items' =>  __( 'Featured Video options', 'neurovisiontheme' ), /* search title for taxomony */
+      'all_items' => __( 'All Featured Video options', 'neurovisiontheme' ), /* all title for taxonomies */
+      'parent_item' => __( 'Parent Featured Video option', 'neurovisiontheme' ), /* parent title for taxonomy */
+      'parent_item_colon' => __( 'Parent Featured Video option:', 'neurovisiontheme' ), /* parent taxonomy title */
+      'edit_item' => __( 'Edit Featured Video option', 'neurovisiontheme' ), /* edit custom taxonomy title */
+      'update_item' => __( 'Update Featured Video option', 'neurovisiontheme' ), /* update title for taxonomy */
+      'add_new_item' => __( 'Add New Featured Video option', 'neurovisiontheme' ), /* add new title for taxonomy */
+      'new_item_name' => __( 'New Featured Video option', 'neurovisiontheme' ) /* name title for taxonomy */
+    ),
+    'show_admin_column' => true,
+    'show_ui' => true,
+    'query_var' => true,
+  )
+);
+
 function neurovision_publications() {
 	// creating (registering) the custom type
 	register_post_type( 'publications', /* (http://codex.wordpress.org/Function_Reference/register_post_type) */
@@ -129,7 +150,7 @@ function neurovision_publications() {
     	)
     );
 
-    
+
     /*
     	looking for custom meta boxes?
     	check out this fantastic tool:
