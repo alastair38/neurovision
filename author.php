@@ -1,5 +1,5 @@
 <?php get_header();
-get_template_part( 'parts/content', 'breadcrumbs' );
+//get_template_part( 'parts/content', 'breadcrumbs' );
 $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
 ?>
 
@@ -10,7 +10,7 @@ $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : g
 		    <div class="col s12 ">
 
 					<header>
-						<h1 class="page-title thin center"><?php echo'Content contributed by ' . $curauth->display_name;?></h1>
+						<h1 class="page-title thin center"><?php echo'Contributed by ' . $curauth->display_name;?></h1>
 
 					</header>
 					<ul class="collection with-header">
@@ -25,8 +25,6 @@ $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : g
 					joints_page_navi();
 
 					else :
-
-					get_the_author();
 
 					get_template_part( 'parts/content', 'missing-author' );
 
@@ -48,7 +46,7 @@ if ( $custom_posts->have_posts() ):
         get_template_part( 'parts/loop', 'archive' );
     endwhile;
 else:
-    // nothing found
+    get_template_part( 'parts/content', 'missing-author_pubs' );
 endif;?>
 </ul>
 				</div>

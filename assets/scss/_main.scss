@@ -90,7 +90,17 @@ right: 0;
   }
 }
 
-.home section {padding-bottom: 2rem;}
+.home section {
+  padding-bottom: 2rem;
+}
+
+.post-type-archive-videos h2.card-title {
+  background: rgba(48, 45, 63, 0.63);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+}
 
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
@@ -1357,11 +1367,11 @@ FOOTER STYLES
   font-weight: 400;
   ul {
     font-size: 0; // this removes white space between li children for application of side borders. Margin needs to reapplied hence...
-    margin-top: 1rem;
+    margin: 2rem 0;
   }
   li {
     display: inline-block;
-    width: 20%;
+    min-width: 20%;
     font-size: .95rem;
     @media #{$small-and-down} {
     	width: 100%;
@@ -1369,11 +1379,8 @@ FOOTER STYLES
     }
     a {
       @extend .white-text;
-      .mdi {
-        border-radius: 50%;
-        width: 1.75em;
-        height: 1.75em;
-        line-height: 1.75em;
+      i.left {
+        margin-right: 0px;
       }
       &:hover, &:focus {
         .mdi {
@@ -1383,18 +1390,7 @@ FOOTER STYLES
       }
     }
   }
-  li:not(:first-of-type) {
-    border-left: 1px solid #fff;
-    @media #{$small-and-down} {
-      border-left: 1px solid transparent;
-    }
-  }
-  li:not(:last-of-type) {
-    border-right: 1px solid #fff;
-    @media #{$small-and-down} {
-      border-right: 1px solid transparent;
-    }
-  }
+
   .row {
     margin-bottom: 0;
   }

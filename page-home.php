@@ -28,9 +28,7 @@ get_header(); ?>
 					</div>
 
 				</div>
-
-
-
+				
 					<?php
 
 								get_template_part( 'parts/loop', 'page-home' );
@@ -43,16 +41,8 @@ get_header(); ?>
 					<a href="#starting"><i class="material-icons">keyboard_arrow_down</i></a>
 					 -->
 
-
-
-
 			 <!-- end #main -->
 
-
-
 	</main> <!-- end main -->
-
-
-
 
 <?php get_footer(); ?>

@@ -27,6 +27,7 @@ if( have_rows('tabs') ):
 if( have_rows('tabs') ):
   while ( have_rows('tabs') ) : the_row();
 	$cpt = get_sub_field('custom_post_type');
+	$cat = get_sub_field('category');
 ?>
 <section id="<?php the_sub_field('tab_title');?>" class="row center" itemscope itemtype="http://schema.org/WebPage">
 
@@ -55,7 +56,7 @@ if( have_rows('tabs') ):
 				wp_reset_postdata();
 			} else {
 		global $post;
-		$args = array( 'posts_per_page' => 3, 'order'=> 'ASC', 'post_type' => $cpt );
+		$args = array( 'posts_per_page' => 3, 'order'=> 'ASC', 'post_type' => $cpt, 'category' => $cat);
 		$postslist = get_posts( $args );
 		foreach ( $postslist as $post ) :
 		setup_postdata( $post ); ?>

@@ -62,23 +62,23 @@ $wp_customize->add_control(
         'description' => 'Add your landline number here.'
     )
 );
-$wp_customize->add_setting(
-    'tcx_mobile_contact',
-    array(
-        'default'    =>  '07772 758 636',
-        'sanitize_callback'  => 'tcx_sanitize_text',
-        'transport'  =>  'refresh'
-    )
-);
-$wp_customize->add_control(
-    'tcx_mobile_contact',
-    array(
-        'section'   => 'tcx_contact_options',
-        'label'     => 'Mobile',
-        'type'      => 'tel',
-        'description' => 'Add your mobile phone number here. <br /><br /><strong>Once you have added your contact details you need to click away from the final box to enable the "Save & Publish" button</strong>'
-    )
-);
+// $wp_customize->add_setting(
+//     'tcx_mobile_contact',
+//     array(
+//         'default'    =>  '07772 758 636',
+//         'sanitize_callback'  => 'tcx_sanitize_text',
+//         'transport'  =>  'refresh'
+//     )
+// );
+// $wp_customize->add_control(
+//     'tcx_mobile_contact',
+//     array(
+//         'section'   => 'tcx_contact_options',
+//         'label'     => 'Mobile',
+//         'type'      => 'tel',
+//         'description' => 'Add your mobile phone number here. <br /><br /><strong>Once you have added your contact details you need to click away from the final box to enable the "Save & Publish" button</strong>'
+//     )
+// );
 
 $wp_customize->add_section(
     'tcx_logo_options',
