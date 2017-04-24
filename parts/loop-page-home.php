@@ -8,7 +8,7 @@ if( have_rows('tabs') ):
   while ( have_rows('tabs') ) : the_row();
 ?>
 
-		<li class="tab col s4"><a class="active" href="#<?php the_sub_field('tab_title');?>"><?php the_sub_field('tab_title');?></a></li>
+		<li class="tab col s3"><a class="active" href="#<?php the_sub_field('tab_title');?>"><?php the_sub_field('tab_title');?></a></li>
 
 
 <?php
@@ -27,7 +27,7 @@ if( have_rows('tabs') ):
 if( have_rows('tabs') ):
   while ( have_rows('tabs') ) : the_row();
 	$cpt = get_sub_field('custom_post_type');
-	$cat = get_sub_field('category');
+	$page_id = get_sub_field('page_to_link');
 ?>
 <section id="<?php the_sub_field('tab_title');?>" class="row center" itemscope itemtype="http://schema.org/WebPage">
 
@@ -54,9 +54,21 @@ if( have_rows('tabs') ):
 				<?php
 				endforeach;
 				wp_reset_postdata();
-			} else {
+			} elseif($page_id) {?>
+				<article class="entry-content col s4 offset-s4">
+					<div class="col s12 center">
+						 <?php echo get_the_post_thumbnail($page_id, array(150, 150), array('class' => 'responsive-img circle')); ?>
+					</div>
+					<div class="col s12">
+						<div class="card-content">
+							<label class="authors"><a href="<?php the_permalink($page_id); ?>"><?php echo get_the_title($page_id);?></a></label>
+						</div>
+					</div>
+
+				</article>
+			<?php } else {
 		global $post;
-		$args = array( 'posts_per_page' => 3, 'order'=> 'ASC', 'post_type' => $cpt, 'category' => $cat);
+		$args = array( 'posts_per_page' => 3, 'order'=> 'ASC', 'post_type' => $cpt);
 		$postslist = get_posts( $args );
 		foreach ( $postslist as $post ) :
 		setup_postdata( $post ); ?>

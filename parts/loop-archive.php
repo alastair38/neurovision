@@ -4,5 +4,5 @@
       <label class="authors">Written	on <?php echo the_time('F j, Y') . '.';?></label>
       <?php the_excerpt();?>
 
-      <a href="#!" class="secondary-content"><i class="material-icons">folder</i></a>
+      <a href="#!" class="secondary-content hide-on-small-only"><i class="material-icons">folder</i></a>
     </li>

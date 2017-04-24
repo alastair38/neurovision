@@ -16,22 +16,12 @@
 
 
 				<label class="authors">Posted on <?php echo the_time('F j, Y') . '.';?>
-				<?php
 
-					echo '<br />Year of recording: '. get_the_term_list( '', 'video_date', '', ', ', '' );
-
-				?>
-				<?php
-
-				 ?>
 			</label>
 
-      <?php $private = get_field('private');?>
-      			<?php if($private == "Yes") {?>
-              <a href="<?php the_permalink();?>" class="btn materialize-red lighten-2 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Click to request access to this video"><i class="material-icons right">lock</i>Request Access</a>
-            <?php } else {?>
-              <a href="<?php the_permalink();?>" class="btn grey darken-3">View video </a>
-            <?php } ?>
+			<a href="<?php the_permalink();?>" class="btn grey darken-3">View image </a>
+
+
 
 
 			</div>

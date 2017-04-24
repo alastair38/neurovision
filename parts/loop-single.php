@@ -13,7 +13,7 @@
 					echo 'Recorded in '. get_the_term_list( '', 'video_date', '', ', ', '' );?>
 				<?php } else {?>
 					Posted by <?php the_author_posts_link(); ?>	on <?php echo the_time('F j, Y') . '. ';
-						echo 'Published '. get_the_term_list( '', 'video_date', '', ', ', '' );?>
+						echo 'Posted in '. get_the_category_list(', ');?>
 				<?php }
 		?>
 
@@ -27,6 +27,8 @@
 		$video = get_field('video_url');
 		if($video){
 			echo '<div class="video-container">' . $video . '</div>';
+		} elseif(is_singular('images')){
+			the_post_thumbnail('full', array('class' => 'responsive-img'));
 		} else {
 			the_post_thumbnail('medium', array('class' => 'alignleft responsive-img'));
 		}

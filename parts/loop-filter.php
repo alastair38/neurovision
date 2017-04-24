@@ -12,8 +12,8 @@ if (  is_home() || is_category() || is_post_type_archive() || is_tax('video_date
 
 				<?php //	$my_search->the_form();
 
-						if (  is_home() || is_category()){
-							echo '<h6>Filter Articles by Category</h6>';
+						if (  is_home() || is_category() || is_post_type_archive('news')){
+							echo '<h6>Filter Blog and News Articles by Category</h6>';
 							$cats = get_terms( 'category', array(
 									'hide_empty' => 0
 							) );
@@ -23,7 +23,7 @@ if (  is_home() || is_category() || is_post_type_archive() || is_tax('video_date
 											echo '<a href="' . esc_url( get_term_link( $cat ) ) . '">' . $cat->name . '</a><span class="round-badge">' . $cat->count . '</span>';
 									}
 									echo '';
-						} else {
+						} elseif (  is_post_type_archive('videos') || is_category()) {
 
 							echo do_shortcode( '[searchandfilter taxonomies="video_date" types="checkbox" headings="Date" operators="OR" hide_empty="0"]' );
 						}
