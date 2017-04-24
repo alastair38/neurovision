@@ -6,9 +6,10 @@
 
 if( have_rows('tabs') ):
   while ( have_rows('tabs') ) : the_row();
+	$tab_title = get_sub_field('tab_title');
 ?>
 
-		<li class="tab col s3"><a class="active" href="#<?php the_sub_field('tab_title');?>"><?php the_sub_field('tab_title');?></a></li>
+		<li class="tab col s3"><a class="active" href="#<?php echo sanitize_title( $tab_title );?>"><?php the_sub_field('tab_title');?></a></li>
 
 
 <?php
@@ -28,8 +29,9 @@ if( have_rows('tabs') ):
   while ( have_rows('tabs') ) : the_row();
 	$cpt = get_sub_field('custom_post_type');
 	$page_id = get_sub_field('page_to_link');
+	$tab_id = get_sub_field('tab_title');
 ?>
-<section id="<?php the_sub_field('tab_title');?>" class="row center" itemscope itemtype="http://schema.org/WebPage">
+<section id="<?php echo sanitize_title( $tab_id );?>" class="row center" itemscope itemtype="http://schema.org/WebPage">
 
 	<h4 class="col s12 center thin">
 		<?php the_sub_field('tab_byline');?>
